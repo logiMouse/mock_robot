@@ -5,4 +5,17 @@
 package frc.robot;
 
 /** Add your docs here. */
-public class constance {}
+public class constance {
+
+private static final int drive_right_1 = 0;
+
+
+
+
+
+
+
+
+
+
+}

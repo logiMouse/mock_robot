@@ -28,16 +28,20 @@ public class Robot extends TimedRobot {
 
   // motors/ canspark maxs 
   // left 1
-  private CANSparkMax left_drive_1 = new CANSparkMax(1, MotorType.kBrushless);
+  CANSparkMax left_drive_1 = new CANSparkMax(1, MotorType.kBrushless);
  // left 2
-  private CANSparkMax left_drive_2 = new CANSparkMax(2, MotorType.kBrushless);
+   CANSparkMax left_drive_2 = new CANSparkMax(2, MotorType.kBrushless);
 // right 1
-  private CANSparkMax right_drive_1 = new CANSparkMax(3, MotorType.kBrushless);
+   CANSparkMax right_drive_1 = new CANSparkMax(3, MotorType.kBrushless);
   // right 2
-  private CANSparkMax right_drive_2 = new CANSparkMax(4, MotorType.kBrushless);
+  CANSparkMax right_drive_2 = new CANSparkMax(4, MotorType.kBrushless);
 
   public static Joystick Drive_Right = new Joystick(0);
   public static Joystick Drive_Left = new Joystick(1);
+
+  CANSparkMax pivot_down = new CANSparkMax(0, MotorType.kBrushless);
+
+  CANSparkMax pivot_up = new CANSparkMax(0, MotorType.kBrushless);
 
 
   /**
@@ -76,11 +80,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-
-    left_drive_1.set(Drive_Left.getY());
-    right_drive_1.set(Drive_Right.getY());
-
-
 
   }
 
@@ -124,7 +123,20 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+
+    left_drive_1.set(Drive_Left.getY());
+    right_drive_1.set(Drive_Right.getY());
+
+    if ( pivot_up.getAsBolean()){
+      pivot_up.set(0);
+
+    }if (pivot_down.GetAsBolean) {
+      pivot_down.set(0);
+    }
+
+
+  }
 
   /** This function is called once when the robot is disabled. */
   @Override
