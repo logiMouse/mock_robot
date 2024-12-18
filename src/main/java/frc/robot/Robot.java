@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
   public static JoystickButton pivot_Button = new JoystickButton(Drive_Left, 1);
   public static JoystickButton pivot_Button_down = new JoystickButton(Drive_Left, 2);
 
-  CANSparkMax pivot = new CANSparkMax(constance.pivot_up, MotorType.kBrushless);
+  CANSparkMax pivot = new CANSparkMax(constance.pivot, MotorType.kBrushless);
 
 
   /**
@@ -62,16 +62,15 @@ public class Robot extends TimedRobot {
     left_drive_2.setIdleMode(IdleMode.kBrake);
     right_drive_1.setIdleMode(IdleMode.kBrake);
     right_drive_2.setIdleMode(IdleMode.kBrake);
-    pivot_down.setIdleMode(IdleMode.kBrake);
-    pivot_up.setIdleMode(IdleMode.kBrake);
+    pivot.setIdleMode(IdleMode.kBrake);
 
 
     // right_drive_1.setInverted(true);
     // right_drive_2.setInverted(true);
     // left_drive_1.setInverted(true);
     // left_drive_2.setInverted(true);
-    // pivot_up.setInverted(true);
-    // pivot_down.setInverted(true);
+    // pivot.setInverted(true);
+
 
     right_drive_2.follow(right_drive_1);
     left_drive_2.follow(left_drive_1);
