@@ -45,9 +45,7 @@ public class Robot extends TimedRobot {
   public static JoystickButton pivot_Button = new JoystickButton(Drive_Left, 1);
   public static JoystickButton pivot_Button_down = new JoystickButton(Drive_Left, 2);
 
-  CANSparkMax pivot_down = new CANSparkMax(constance.pivot_down, MotorType.kBrushless);
-
-  CANSparkMax pivot_up = new CANSparkMax(constance.pivot_up, MotorType.kBrushless);
+  CANSparkMax pivot = new CANSparkMax(constance.pivot_up, MotorType.kBrushless);
 
 
   /**
