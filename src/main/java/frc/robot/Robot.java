@@ -133,14 +133,19 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
+    //arcade 
+    left_drive_1.set(Drive_Left.getY()-Drive_Left.getX());
+    right_drive_1.set(Drive_Right.getY()+Drive_Right.getX());
+
+    // tank
     left_drive_1.set(Drive_Left.getY());
     right_drive_1.set(Drive_Right.getY());
 
     if ( pivot_Button.getAsBoolean()){
-      pivot_up.set(constance.speed);
+      pivot.set(constance.speed);
 
     } else if (pivot_Button_down.getAsBoolean()) {
-      pivot_down.set(constance.speed);
+      pivot.set(constance.speed);
     }
 
 
