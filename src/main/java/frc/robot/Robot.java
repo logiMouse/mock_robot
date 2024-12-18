@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -28,20 +31,23 @@ public class Robot extends TimedRobot {
 
   // motors/ canspark maxs 
   // left 1
-  CANSparkMax left_drive_1 = new CANSparkMax(1, MotorType.kBrushless);
+  CANSparkMax left_drive_1 = new CANSparkMax(constance.drive_left_1, MotorType.kBrushless);
  // left 2
-   CANSparkMax left_drive_2 = new CANSparkMax(2, MotorType.kBrushless);
+   CANSparkMax left_drive_2 = new CANSparkMax(constance.drive_left_2, MotorType.kBrushless);
 // right 1
-   CANSparkMax right_drive_1 = new CANSparkMax(3, MotorType.kBrushless);
+   CANSparkMax right_drive_1 = new CANSparkMax(constance.drive_right_1, MotorType.kBrushless);
   // right 2
-  CANSparkMax right_drive_2 = new CANSparkMax(4, MotorType.kBrushless);
+  CANSparkMax right_drive_2 = new CANSparkMax(constance.drive_right_2, MotorType.kBrushless);
 
   public static Joystick Drive_Right = new Joystick(0);
   public static Joystick Drive_Left = new Joystick(1);
 
-  CANSparkMax pivot_down = new CANSparkMax(0, MotorType.kBrushless);
+  public static JoystickButton pivot_Button = new JoystickButton(Drive_Left, 1);
+  public static JoystickButton pivot_Button_down = new JoystickButton(Drive_Left, 2);
 
-  CANSparkMax pivot_up = new CANSparkMax(0, MotorType.kBrushless);
+  CANSparkMax pivot_down = new CANSparkMax(constance.pivot_down, MotorType.kBrushless);
+
+  CANSparkMax pivot_up = new CANSparkMax(constance.pivot_up, MotorType.kBrushless);
 
 
   /**
@@ -58,11 +64,16 @@ public class Robot extends TimedRobot {
     left_drive_2.setIdleMode(IdleMode.kBrake);
     right_drive_1.setIdleMode(IdleMode.kBrake);
     right_drive_2.setIdleMode(IdleMode.kBrake);
+    pivot_down.setIdleMode(IdleMode.kBrake);
+    pivot_up.setIdleMode(IdleMode.kBrake);
+
 
     // right_drive_1.setInverted(true);
     // right_drive_2.setInverted(true);
     // left_drive_1.setInverted(true);
     // left_drive_2.setInverted(true);
+    // pivot_up.setInverted(true);
+    // pivot_down.setInverted(true);
 
     right_drive_2.follow(right_drive_1);
     left_drive_2.follow(left_drive_1);
@@ -128,11 +139,11 @@ public class Robot extends TimedRobot {
     left_drive_1.set(Drive_Left.getY());
     right_drive_1.set(Drive_Right.getY());
 
-    if ( pivot_up.getAsBolean()){
-      pivot_up.set(0);
+    if ( pivot_Button.getAsBoolean()){
+      pivot_up.set(constance.speed);
 
-    }if (pivot_down.GetAsBolean) {
-      pivot_down.set(0);
+    } else if (pivot_Button_down.getAsBoolean()) {
+      pivot_down.set(constance.speed);
     }
 
 
